@@ -1,0 +1,17 @@
+<style>
+.post {
+    margin-bottom: 25px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: bisque;
+    border: 3px solid brown;
+}
+</style>
+
+<div class="post" *ngFor="let post of posts">
+    <div>User ID: {{ post.userId }}</div>
+    <div>ID: {{ post.id }}</div>
+    <div>Title: {{ post.title }}</div>
+    <div>Body: {{ post.body }}</div>
+</div>
+
