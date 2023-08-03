@@ -1,1 +1,54 @@
-<p>post works!</p>
+<style>
+.search, .comment_section {
+    margin-bottom: 25px;
+}
+
+.post, .comment {
+    margin-bottom: 25px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: bisque;
+    border: 3px solid brown;
+}
+</style>
+
+<div class="search">
+    <input type="text" name="search" placeholder="Enter post id here" [(ngModel)]="id" (keyup.enter)="searchPost()" />
+    <button (click)="searchPost()">Search</button>
+</div>
+
+<div *ngIf="post; else noPostFound">
+    <div class="post">
+        <div>User ID: {{ post.userId }}</div>
+        <div>ID: {{ post.id }}</div>
+        <div>Title: {{ post.title }}</div>
+        <div>Body: {{ post.body }}</div>
+    </div>
+    
+    
+    <div class="comment_section">
+        <h3>Comments</h3>
+        <h4>Filter by name, email and body</h4>
+        
+        <div class="search">
+            <input type="text" name="search" placeholder="Enter anything here" [(ngModel)]="comment_search" (input)="filterComment()" />
+        </div>
+
+        <div *ngIf="comments_filter.length > 0">
+            <div class="comment" *ngFor="let comment of comments_filter">
+                <div>Post ID: {{ comment.postId }}</div>
+                <div>ID: {{ comment.id }}</div>
+                <div>Name: {{ comment.name }}</div>
+                <div>Email: {{ comment.email }}</div>
+                <div>Body: {{ comment.body }}</div>
+            </div>
+        </div>
+        <div *ngIf="comments_filter.length <= 0">
+            <h3>No comments found.</h3>
+        </div>
+    </div>
+</div>
+
+<ng-template #noPostFound>
+    <h3>No post found.</h3>
+</ng-template>

@@ -6,6 +6,7 @@ import { PostComponent } from './post/post.component';
 const routes: Routes = [
   { path: 'allPosts', component: AllPostsComponent },
   { path: 'post', component: PostComponent },
+  { path: 'post/:id', component: PostComponent },
   { path: '',   redirectTo: '/allPosts', pathMatch: 'full' }, // redirect to `allPosts`
 ];
 
